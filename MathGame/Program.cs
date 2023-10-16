@@ -2,30 +2,53 @@
 var name = Console.ReadLine();
 var date = DateTime.UtcNow;
 
-Console.WriteLine("-----------------------------------");
-Console.WriteLine($"Hello {name}. It's {date}. This is your math game.\n");
-Console.WriteLine(@$"What game would you like to play today? Choose options from below: 
-A - Addition
-S - Subtraction
-M - Multiplication
-D - Division
-Q - Quit the program
-");
-Console.WriteLine("-----------------------------------");
+Menu(name, date);
 
-var gameSelected = Console.ReadLine();
+void AdditionGame(string message) {
+    Console.WriteLine(message);
+}
+void SubtractionGame(string message) {
+    Console.WriteLine(message);
+}
+void DivisionGame(string message) {
+    Console.WriteLine(message);
+}
+void MultiplicationGame(string message) {
+    Console.WriteLine(message);
+}
 
-if (gameSelected!.Trim().ToLower() == "a") {
-    Console.WriteLine("Addition game Selected");
-} else if (gameSelected!.Trim().ToLower() == "s") {
-    Console.WriteLine("Subtraction game selected");
-} else if (gameSelected!.Trim().ToLower() == "m") {
-    Console.WriteLine("Multiplication game selected");
-} else if (gameSelected!.Trim().ToLower() == "d") {
-    Console.WriteLine("Division game selected");
-} else if (gameSelected!.Trim().ToLower() == "q") {
-    Console.WriteLine("Goodbye");
-    Environment.Exit(1);
-} else {
-    Console.WriteLine("Invalid Input");
+void Menu(string? name, DateTime date) {
+    Console.WriteLine("-----------------------------------");
+    Console.WriteLine($"Hello {name}. It's {date}. This is your math game.\n");
+    Console.WriteLine(@$"What game would you like to play today? Choose options from below: 
+    A - Addition
+    S - Subtraction
+    M - Multiplication
+    D - Division
+    Q - Quit the program
+    ");
+    Console.WriteLine("-----------------------------------");
+
+    var gameSelected = Console.ReadLine();
+    switch (gameSelected!.Trim().ToLower()) {
+        case "a":
+            AdditionGame("Addition game Selected");
+            break; 
+        case "s":
+            SubtractionGame("Subtraction game selected");
+            break;
+        case "m":
+            MultiplicationGame("Multiplication game selected");
+            break;
+        case "d":
+            DivisionGame("Division game selected");
+            break;
+        case "q":
+            Console.WriteLine("Goodbye");
+            Environment.Exit(1);
+            break;
+        default:
+            Console.WriteLine("Invalid Input");
+            break;
+    }
 }
